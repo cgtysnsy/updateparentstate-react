@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Childcomponent from "./Childcomponent";
+import "./App.css";
 
 function App() {
+  const [parentState, setParentState] = useState("Let's try to change me");
+
+  const handleChange = (value) => {
+    setParentState(value);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <div className="parent-container">
+          <h1>Parent</h1>
+          <h3 className="parent-state">{parentState}</h3>
+        </div>
+
+        <Childcomponent handleChange={handleChange} />
+      </div>
     </div>
   );
 }
